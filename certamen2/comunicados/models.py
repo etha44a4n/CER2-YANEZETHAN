@@ -1,6 +1,5 @@
 from django.db import models
-
-# Create your models here.
+from django.contrib.auth.models import User
 
 class Entidad(models.Model):
     id = models.BigAutoField(primary_key=True)
@@ -9,7 +8,6 @@ class Entidad(models.Model):
 
     def __str__(self) -> str:
         return self.nombre
-
 
 class Comunicado(models.Model):
     TIPO_CHOICES = [
@@ -27,9 +25,7 @@ class Comunicado(models.Model):
     visible = models.BooleanField()
     fecha_publicacion = models.DateTimeField(auto_now_add=True)
     fecha_ultima_modificacion = models.DateTimeField(auto_now=True)
-
+    publicado_por = models.ForeignKey(User, on_delete=models.CASCADE)
+    
     def __str__(self) -> str:
         return self.titulo
-
-
-
