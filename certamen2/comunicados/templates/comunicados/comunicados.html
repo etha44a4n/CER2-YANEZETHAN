@@ -1,10 +1,10 @@
-
+<!-- Carousel visble solo para pantallas xxl-->
 <div id="comunicadoCarousel" class="row d-none d-xxl-block p-5">
-  <div id="carouselExample" class="carousel slide">
+  <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
     <div class="row carousel-inner">
       {% for comunicado in comunicados %}
       {% if comunicado.visible == True %}
-        <div class="carousel-item{% if forloop.first %} active{% endif %}">
+        <div class="carousel-item{% if forloop.first %} active {% endif %}" data-bs-interval="7000">
           <div class="row-cols-1">
             <div class="card h-100">
               <div class="card-body">
@@ -17,8 +17,8 @@
             </div>
           </div>
         </div>
-    {% endif %}
-    {% endfor %}
+      {% endif %}
+      {% endfor %}
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
     </button>
@@ -28,11 +28,10 @@
 </div>
 
 
-
-
+<!-- Card groups visible para todas las pantallas exceptuando xxl-->
 <div class="row d-xxl-none">
     {% if total_comunicados == 0 %}
-    <div class="alert alert-warning" role="alert">
+    <div id="alert" class="col-10 alert alert-warning mx-auto m-5" role="alert">
         No hay comunicados
     </div>
     {% else %}

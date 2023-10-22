@@ -19,12 +19,6 @@ def home(request):
         "total_entidades": Entidad.objects.count(),
         "entidades": Entidad.objects.all(),
         "entidad_seleccionada": entidad_seleccionada 
-
     }
     
     return render(request, 'comunicados/home.html', data)
-
-
-
-
-
