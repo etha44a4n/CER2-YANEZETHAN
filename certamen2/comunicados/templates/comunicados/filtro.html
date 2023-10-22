@@ -1,0 +1,16 @@
+
+<div id="filtro" class="row d-xxl-none">
+  <form method="GET" action="{% url 'home' %}">
+    <div class="col-md-3 col-8">
+      <select class="form-select" name="entidad" onchange="this.form.submit()">
+        <option value="Todos" {% if entidad_seleccionada == "Todos" %}selected{% endif %}>Todos</option>
+        {% for entidad in entidades %}
+          <option value="{{ entidad.nombre }}" {% if entidad_seleccionada == entidad.nombre %}selected{% endif %}>
+            {{ entidad.nombre }}
+          </option>
+        {% endfor %}
+      </select>
+    </div>
+  </form>
+</div>
+

@@ -1,0 +1,25 @@
+header{
+    background: #005E90;
+    height: 16vh;
+    padding-top: 5px; 
+}
+
+.navbar{
+    background: #074469;
+}
+
+h1{
+    color: #abb8c3;
+}
+
+hr{
+    border-color: #abb8c3;
+}
+
+#filtro{
+    padding-top: 5vh;
+}
+
+#comunicadoCarousel{
+    height: 70vh;
+}

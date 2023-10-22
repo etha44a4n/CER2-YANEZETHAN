@@ -1,0 +1,16 @@
+{% extends 'comunicados/base.html' %}
+
+{% block content %}
+{% load static %}
+
+
+
+<div class="container">
+
+  {% include 'comunicados/filtro.html' %}
+
+  {% include 'comunicados/comunicados.html' %}
+
+</div>
+
+{% endblock %}
