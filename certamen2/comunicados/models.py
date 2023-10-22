@@ -25,7 +25,8 @@ class Comunicado(models.Model):
     visible = models.BooleanField()
     fecha_publicacion = models.DateTimeField(auto_now_add=True)
     fecha_ultima_modificacion = models.DateTimeField(auto_now=True)
-    publicado_por = models.ForeignKey(User, on_delete=models.CASCADE)
+    publicado_por = models.ForeignKey(User, on_delete=models.CASCADE, editable=False, null=True)
+    modificado_por = models.ForeignKey(User, related_name="modificado_por", on_delete=models.CASCADE, editable=False, null=True)
     
     def __str__(self) -> str:
         return self.titulo
