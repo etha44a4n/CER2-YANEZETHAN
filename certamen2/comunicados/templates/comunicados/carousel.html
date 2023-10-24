@@ -1,0 +1,76 @@
+{% load static %}
+<!-- Carousel visible solo para pantallas xxl-->
+
+{% if total_comunicados == 0 %}
+    <div id="alert" class="col-10 alert alert-warning mx-auto m-5 d-none d-xxl-block m-0 p-0" role="alert">
+        No hay comunicados
+    </div>
+{% else %}
+
+<div id="comunicadoCarousel" class="container-fluid d-none d-xxl-block m-0 p-0" style="height: 100vh; width: 100%;">
+    <div id="carouselExample" class="carousel slide carousel-fade" data-bs-ride="carousel">
+      <div class="row carousel-inner">
+        {% for comunicado in comunicados_carousel %}
+        {% if comunicado.visible == True%}
+          <div class="carousel-item
+                      {% if forloop.first %} 
+                      active 
+                      {% endif %}" 
+                      data-bs-interval="6000" name="entidad" style="height: 100vh; width: 100%;"  >
+            <div class="row-cols-1">
+
+              <!-- Header dentro del carrusel -->
+              <header class="align-items-center">
+                <div class="row">
+                  <div class="col col-sm-3">
+                    <div class="d-flex align-items-center justify-content-center" style="height: 100%;">
+                      <img src="{% static 'comunicados/img/Logo_UTFSM.png' %}" class="img-fluid" style="max-height: 100px;" alt="">
+                    </div>
+                  </div>
+                  <div class="col-7">
+                    <h1>Sistema Integrado de Notificaciones</h1>
+                    <hr>
+                  </div>
+                  <div class="col d-none d-xxl-block">
+                    {% if comunicado.entidad.logo %}
+                      <img src="{{comunicado.entidad.logo.url}}" class="img-fluid" style="max-height: 100px;" alt="">
+                    {% else %}
+                      <img src="{% static 'comunicados/img/Logo_UTFSM.png' %}" class="img-fluid" style="max-height: 100px;" alt="">
+                    {% endif %}
+                  </div>
+                </div>
+              </header>
+              <!-- Fin del header -->
+
+              <div class="card border-0 d-flex justify-content-center align-items-center">
+                <div class="card-body p-20">
+                    <div class="container-fluid">
+                        <div class="card h-100" style="width: 50vw; height: 70vh;">
+                            <div class="card-body">
+                                <h1 class="card-title">{{comunicado.titulo}}</h1>
+                                {% if comunicado.entidad == None %}
+                                  <h6 class="card-subtitle mb-2 text-body-secondary">ADMINISTRACIÓN</h6>
+                                {% else %}
+                                  <h6 class="card-subtitle mb-2 text-body-secondary">{{comunicado.entidad}}</h6>
+                                {% endif %}
+                                <p class="card-text"><small class="text-body-secondary">{{comunicado.fecha_publicacion}}</small></p>
+                                <p class="card-text">{{comunicado.detalle}}</p>
+                                <p class="card-text"><small class="text-body-secondary">Última modificación: {{comunicado.fecha_ultima_modificacion}}</small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endif %}
+        {% endfor %}
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+      </button>
+    </div>
+  </div>
+  {% endif %}
+  

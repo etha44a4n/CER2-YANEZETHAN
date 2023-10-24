@@ -1,7 +1,7 @@
 
 <div id="filtro" class="row d-xxl-none">
   <form method="GET" action="{% url 'home' %}">
-    <div class="col-md-3 col-12">
+    <div class="col-md-3 col">
       <select class="form-select" name="entidad" onchange="this.form.submit()">
         <option value="Todos" 
                 {% if entidad_seleccionada == "Todos" %}

@@ -11,8 +11,11 @@
   </head>
 
   <body>
-    <!-- HEADER SISTEMA INTEGRADO DE NOTIFICACIONES -->
-    <header class="align-items-center">
+    <!-- Carousel visible solo para pantallas xxl -->
+    {% include 'comunicados/carousel.html' %}
+
+      <!-- HEADER SISTEMA INTEGRADO DE NOTIFICACIONES visible para todas las pantallas exceptuando xxl -->
+    <header class="align-items-center d-block d-xxl-none">
       <div class="row">
         <div class="col col-sm-3">
           <div class="d-flex align-items-center justify-content-center" style="height: 100%;">
@@ -24,6 +27,13 @@
           <h1>Sistema Integrado de Notificaciones</h1>
           <hr>
         </div>
+        <div class="col d-none d-xxl-block">
+          {% if comunicado.entidad.logo %}
+            <img src="{{comunicado.entidad.logo.url}}" class="img-fluid" style="max-height: 100px;" alt="">
+          {% else %}
+            <img src="{% static 'comunicados/img/Logo_UTFSM.png' %}" class="img-fluid" style="max-height: 100px;" alt="">
+          {% endif %}
+        </div>
       </div>
     </header>
 
@@ -32,7 +42,7 @@
     <nav class="navbar navbar-expand-lg d-none d-sm-block d-xxl-none">
       <div class="container">
         <a class="navbar-brand" href="{% url 'home' %}">
-          <img width="200px" height="40px" src="{% static 'comunicados/img/logo-usm_blanco.svg' %}" class="" alt="">
+          <img width="180px" height="40px" src="{% static 'comunicados/img/logo-usm_blanco.svg' %}" class="" alt="">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -49,7 +59,6 @@
       </div>
     </nav>
     
-
     {% block content %}
 
     {% endblock %}
